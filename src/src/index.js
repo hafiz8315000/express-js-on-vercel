@@ -1,12 +1,12 @@
 import express from "express";
+import { httpServerHandler } from "cloudflare:node";
 
 const app = express();
 
 app.get("/", (req, res) => {
-  res.json({
-    success: true,
-    message: "Jadar Decor Express API is running on Cloudflare Workers"
-  });
+  res.send("Express is working on Cloudflare!");
 });
 
-export default app;
+app.listen(3000);
+
+export default httpServerHandler({ port: 3000 });
